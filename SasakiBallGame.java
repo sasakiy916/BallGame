@@ -29,7 +29,7 @@ public class SasakiBallGame{
 			}else{
 				winBallB++;
 			}
-			System.out.printf("%d回戦%n",i);
+			System.out.printf("%d回戦%n",num+1);
 			System.out.printf("A:%3d,B:%3d...%sの勝ち%n",ballA[num],ballB[num],ballA[num]>ballB[num]?"A":"B");
 			num++;
 		}

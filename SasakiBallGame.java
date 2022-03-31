@@ -1,12 +1,12 @@
 import java.util.*;
 public class SasakiBallGame{
 	public static void main(String[] args){
+		final int round = 5;
 		int[] balls = new int[100];
-		int[] ballA = new int[5];
-		int[] ballB = new int[5];
+		int[] ballA = new int[round];
+		int[] ballB = new int[round];
 		int winBallA = 0;
 		int winBallB = 0;
-		int round = 5;
 		//ボール番号を割り振る
 		for(int i=0;i<balls.length;i++){
 			balls[i] = i+1;
@@ -20,19 +20,23 @@ public class SasakiBallGame{
 		}
 		//ゲーム開始
 		int num =0;
-		for(int i=0;i<round*2;i++){
-			ballA[num] = balls[i];
-			ballB[num] = balls[i+1];
-			i++;
-			if(ballA[num] > ballB[num]){
+		for(int i=0;i<round;i++){
+			//交互にボールを取る
+			ballA[i] = balls[num];
+			num++;
+			ballB[i] = balls[num];
+			num++;
+			//AとBを比較して、それぞれの勝利回数カウント
+			if(ballA[i] > ballB[i]){
 				winBallA++;
 			}else{
 				winBallB++;
 			}
-			System.out.printf("%d回戦%n",num+1);
-			System.out.printf("A:%3d,B:%3d...%sの勝ち%n",ballA[num],ballB[num],ballA[num]>ballB[num]?"A":"B");
-			num++;
+			//各対戦の結果表示
+			System.out.printf("%d回戦%n",i+1);
+			System.out.printf("A:%3d,B:%3d...%sの勝ち%n",ballA[i],ballB[i],ballA[i]>ballB[i]?"A":"B");
 		}
+		//最終結果表示
 		System.out.printf("%d対%dで%sの勝ち",winBallA,winBallB,winBallA>winBallB?"A":"B");
 	}
 }
